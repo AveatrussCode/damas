@@ -93,9 +93,3 @@ int main() {
 
     return 0;
 }
-
-// Salida esperada:
-// Renderizando botón de Windows
-// Renderizando checkbox de Windows
-// Renderizando botón de MacOS
-// Renderizando checkbox de MacOS

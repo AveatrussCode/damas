@@ -8,11 +8,11 @@ using namespace std;
 class Light {
 public:
     void turnOn() {
-        cout << "La luz está encendida." << endl;
+        cout << "La luz esta encendida." << endl;
     }
 
     void turnOff() {
-        cout << "La luz está apagada." << endl;
+        cout << "La luz esta apagada." << endl;
     }
 };
 

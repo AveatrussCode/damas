@@ -77,14 +77,3 @@ int main() {
 
     return 0;
 }
-
-// Salida esperada:
-// Personaje Original:
-// Guerrero: Aragorn, Vida: 100, Fuerza: 85
-// Personaje Clonado:
-// Guerrero: Aragorn, Vida: 100, Fuerza: 85
-//
-// Mago Original:
-// Mago: Gandalf, Vida: 80, Mana: 150
-// Mago Clonado:
-// Mago: Gandalf, Vida: 80, Mana: 150

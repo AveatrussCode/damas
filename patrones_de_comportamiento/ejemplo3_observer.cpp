@@ -1,72 +1,85 @@
-
 #include <iostream>
 #include <vector>
 #include <string>
 
 using namespace std;
 
-class Observer {
+// Interfaz Comando
+class Command {
 public:
-    virtual void update(const string& message) = 0;
+    virtual void execute() = 0;
 };
 
-class Subject {
+// Comando Concreto
+class LightOnCommand : public Command {
 private:
-    vector<Observer*> observers;
-public:
-  
-    void addObserver(Observer* observer) {
-        observers.push_back(observer);
-    }
-
-    void notifyObservers(const string& message) {
-        for (Observer* observer : observers) {
-            observer->update(message);
+    class Light {
+    public:
+        void turnOn() {
+            cout << "La luz está encendida." << endl;
         }
+    };
+    
+    Light* light;
+public:
+    LightOnCommand(Light* l) : light(l) {}
+
+    void execute() override {
+        light->turnOn();
     }
 };
 
-
-class NewsAgency : public Subject {
+// Otro Comando Concreto
+class LightOffCommand : public Command {
 private:
-    string news;
+    class Light {
+    public:
+        void turnOff() {
+            cout << "La luz está apagada." << endl;
+        }
+    };
+    
+    Light* light;
 public:
+    LightOffCommand(Light* l) : light(l) {}
 
-    void setNews(const string& newNews) {
-        news = newNews;
-
-        notifyObservers(news);
+    void execute() override {
+        light->turnOff();
     }
 };
 
-class NewsChannel : public Observer {
+// Clase Invocadora
+class RemoteControl {
 private:
-    string name;
+    Command* command;
 public:
-    NewsChannel(const string& channelName) : name(channelName) {}
+    void setCommand(Command* cmd) {
+        command = cmd;
+    }
 
-
-    void update(const string& message) override {
-        cout << "Canal " << name << " ha recibido las noticias: " << message << endl;
+    void pressButton() {
+        command->execute();
     }
 };
 
 int main() {
-  
-    NewsAgency newsAgency;
-    NewsChannel cnn("CNN");
-    NewsChannel bbc("BBC");
-    NewsChannel fox("Fox News");
+    // Crear el receptor (la luz)
+    class Light light;
 
+    // Crear los comandos
+    LightOnCommand lightOnCommand(&light);
+    LightOffCommand lightOffCommand(&light);
 
-    newsAgency.addObserver(&cnn);
-    newsAgency.addObserver(&bbc);
-    newsAgency.addObserver(&fox);
+    // Crear la invocadora (el control remoto)
+    RemoteControl remoteControl;
 
-    newsAgency.setNews("¡Nuevo descubrimiento en el espacio!");
+    // Enviar comandos a través del control remoto
+    remoteControl.setCommand(&lightOnCommand);
+    remoteControl.pressButton();  // La luz está encendida.
 
-    cout << "\nActualización de noticias:\n";
-    newsAgency.setNews("La economía global muestra señales de recuperación.");
+    remoteControl.setCommand(&lightOffCommand);
+    remoteControl.pressButton();  // La luz está apagada.
 
     return 0;
 }
+

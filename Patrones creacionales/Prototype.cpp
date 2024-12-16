@@ -2,7 +2,7 @@
 #include <memory>
 #include <string>
 
-using namespace std;  // Ahora puedes usar elementos de la biblioteca estándar sin el prefijo 'std::'
+using namespace std;  
 
 // Clase Prototipo
 class Personaje {

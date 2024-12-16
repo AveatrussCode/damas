@@ -95,10 +95,3 @@ int main() {
 
     return 0;
 }
-
-// Salida esperada:
-// Casa construida:
-// Paredes: Paredes de madera
-// Techo: Techo de tejas
-// Puerta: Puerta de madera rústica
-// Ventanas: Ventanas con marco de madera

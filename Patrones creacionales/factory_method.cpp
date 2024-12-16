@@ -59,7 +59,3 @@ int main() {
 
     return 0;
 }
-
-// Salida esperada:
-// Entrega por camión terrestre
-// Entrega por barco marítimo

@@ -61,7 +61,7 @@ public:
     }
     Celda& obtenerCelda(int x, int y) {
         if (x < 0 || x >= TAMANO_TABLERO || y < 0 || y >= TAMANO_TABLERO) {
-            throw out_of_range("Posición fuera del tablero");
+            throw out_of_range("Posicion fuera del tablero");
         }
         return celdas[x][y];
     }
@@ -103,16 +103,17 @@ public:
             }
 
             int x1, y1, x2, y2;
-            cout << "Ingresa la posición de la ficha a mover (fila columna): ";
-            cin >> x1 >> y1;
-            cout << "Ingresa la posición destino (fila columna): ";
+            cout << "Ingresa la posicion de la ficha a mover (fila columna): ";
+            cin >> x1; 
+            cin>> y1;
+            cout << "Ingresa la posicion destino (fila columna): ";
             cin >> x2 >> y2;
 
             try {
                 moverPieza(x1, y1, x2, y2);
                 cambiarTurno();
             } catch (const exception& e) {
-                cout << "Movimiento inválido: " << e.what() << endl;
+                cout << "Movimiento invalido: " << e.what() << endl;
             }
         }
     }
@@ -123,7 +124,7 @@ private:
         auto& destino = tablero.obtenerCelda(x2, y2);
 
         if (origen.estaVacia()) {
-            throw runtime_error("La celda origen está vacía");
+            throw runtime_error("La celda origen esta vacia");
         }
 
         auto pieza = origen.getPieza();
@@ -132,11 +133,11 @@ private:
         }
 
         if (!destino.estaVacia()) {
-            throw runtime_error("La celda destino no está vacía");
+            throw runtime_error("La celda destino no está vacia");
         }
 
         if (!pieza->movimientoValido(x1, y1, x2, y2)) {
-            throw runtime_error("Movimiento no válido para esta pieza");
+            throw runtime_error("Movimiento no valido para esta pieza");
         }
 
         destino.colocarPieza(pieza);

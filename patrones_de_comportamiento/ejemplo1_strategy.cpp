@@ -1,14 +1,8 @@
 #include <iostream>
 using namespace std;
 
-
-
 // Interfaz de estrategia
 class SoundStrategy {
-
-
-
-
 
 public:
     virtual void makeSound() = 0;
@@ -44,3 +38,14 @@ public:
         soundStrategy->makeSound();  // Delegación al comportamiento actual
     }
 };
+int main() {
+    GatoSound gato;
+    PerroSound perro;
+    Animal miAnimal(&gato); // El animal inicialmente hace sonido de gato
+    miAnimal.makeSound();  // Imprime "El gato maulla."
+
+    miAnimal.setStrategy(&perro); // Cambiamos la estrategia a "PerroSound"
+    miAnimal.makeSound();  // Imprime "El perro ladra."
+    
+    return 0;
+}

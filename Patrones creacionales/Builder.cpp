@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-using namespace std;  // Ahora puedes usar nombres de la biblioteca estándar sin el prefijo 'std::'
+using namespace std; 
 
 // Producto complejo
 class Casa {

@@ -4,22 +4,27 @@
 
 using namespace std;
 
+// Receptor (Light)
+class Light {
+public:
+    void turnOn() {
+        cout << "La luz está encendida." << endl;
+    }
+
+    void turnOff() {
+        cout << "La luz está apagada." << endl;
+    }
+};
+
 // Interfaz Comando
 class Command {
 public:
     virtual void execute() = 0;
 };
 
-// Comando Concreto
+// Comando Concreto para encender la luz
 class LightOnCommand : public Command {
 private:
-    class Light {
-    public:
-        void turnOn() {
-            cout << "La luz está encendida." << endl;
-        }
-    };
-    
     Light* light;
 public:
     LightOnCommand(Light* l) : light(l) {}
@@ -29,16 +34,9 @@ public:
     }
 };
 
-// Otro Comando Concreto
+// Comando Concreto para apagar la luz
 class LightOffCommand : public Command {
 private:
-    class Light {
-    public:
-        void turnOff() {
-            cout << "La luz está apagada." << endl;
-        }
-    };
-    
     Light* light;
 public:
     LightOffCommand(Light* l) : light(l) {}
@@ -64,7 +62,7 @@ public:
 
 int main() {
     // Crear el receptor (la luz)
-    class Light light;
+    Light light;
 
     // Crear los comandos
     LightOnCommand lightOnCommand(&light);
@@ -82,4 +80,3 @@ int main() {
 
     return 0;
 }
-

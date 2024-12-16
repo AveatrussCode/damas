@@ -52,8 +52,3 @@ int main() {
 
     return 0;
 }
-
-// Salida esperada:
-// Configuración inicial: Configuración predeterminada
-// Configuración actualizada: Nueva configuración personalizada
-// ¿Son la misma instancia? Sí
